@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#logoDeCor {
+    width: 80%;
+}
+
+#telacarregamento,#telainiciar {
+    height: 100vh;
+    overflow: hidden;
+}
+
+#palmatdiv {
+    flex-direction: column;
+    gap: 0px;
+}
+
+#setavoltar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    pointer-events: all;
+}
+#setavoltar:hover {
+    transform: translateX(-50%) scale(1.15);
+}
+
+#gradepalavras {
+    margin-top: 100px;
+}
+
+#palmatdiv {
+    top: 60%;
+}
+
+#verificandoPal {
+    flex-direction: column;
+}
+
+#logoMWD {
+    width: 100px;
+    margin: auto;
+    margin-bottom: 20px;
+    position: relative;
+    bottom: 10px;
+}
+
+.btn {
+    width: 150px;
+    height: 75px;
+}

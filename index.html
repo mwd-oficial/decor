@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" media="all">
+    <link rel="stylesheet" href="stylecel.css" media="screen and (orientation:portrait)">
+    <title>DeCor</title>
+</head>
+
+<body onload="carregando()">
+    <section id="telacarregamento">
+        <div id="load"></div>
+        <p>Carregando...</p>
+    </section>
+    <section id="telainiciar">
+        <img src="DeCorImg.png" alt="" id="logoDeCor">
+        <div id="palmatdiv">
+            <button onclick="btnpalavra()" id="btnpal" class="btn">Palavras</button>
+            <button class="btn">Matemática</button>
+        </div>
+        <img src="logoMWDt.png" alt="" id="logoMWD">
+    </section>
+    <i class="material-icons" id="setavoltar" class="btn" onclick="voltar()">west</i>
+    <section id="secdigitar">
+        
+        <div id="gradepalavras">
+            <div class="divpalavras"></div>
+            <div class="divpalavras"></div>
+            <div class="divpalavras"></div>
+            <div class="divpalavras"></div>
+            <div class="divpalavras"></div>
+            <div class="divpalavras"></div>
+            <div class="divpalavras"></div>
+            <div class="divpalavras"></div>
+            <div class="divpalavras"></div>
+        </div>
+        
+        <div id="iniform">
+            <fieldset>
+                <legend>Digite aqui e dê enter</legend>
+                    <input type="text" name="palavraInput" id="ipalavraInput" class="inputs"
+                    placeholder="Mín 2 palavras, 2 letras. Máx 20 letras" autocomplete="off" maxlength="20" minlength="2"
+                    onfocus="focoEsc()">
+            </fieldset>
+            <button onclick="enviando()" class="btn btnGray" id="btnenviar">Enviar</button>
+        </div>
+        <img src="logoMWDt.png" alt="" id="logoMWD">
+    </section>
+
+    <section id="secdecorar">
+        <div id="h1verificando">
+            <h1>Qual é a palavra?</h1>
+            <div id="verificandoPal">
+                <div id="sorte"></div>
+                <p>=</p>
+                <div id="escrito"></div>
+            </div>
+        </div>
+        <div id="decform">
+            <button onclick="sorteando()" id="btnsorte" class="btn">Sortear</button>
+            <fieldset style="margin: 0;">
+                <legend>Digite aqui e dê enter</legend>
+                <input type="text" name="decoraInput" id="idecoraInput" class="inputs btnGray" placeholder="Digite aqui" autocomplete="off"
+                maxlength="20" minlength="2" onfocus="focoSec()">
+            </fieldset>
+                <button onclick="verificando()" id="btnverifica" class="btn btnGray">Verificar</button>
+        </div>
+        <img src="logoMWDt.png" alt="" id="logoMWD">
+    </section>
+    <script src="script.js"></script>
+</body>
+
+</html>
