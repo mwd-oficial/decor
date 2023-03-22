@@ -1,3 +1,5 @@
+
+
 //tela de carregamento
 var telacarregamento = document.getElementById("telacarregamento")
 var telainiciar = document.getElementById("telainiciar")
@@ -14,14 +16,15 @@ function carregando() {
     }, 2000);
 }
 
+var divs = document.getElementsByClassName("divpalavras")
 var btnpal = document.getElementById("btnpal")
 var setavoltar = document.getElementById("setavoltar")
 var logoDeCor = document.getElementById("logoDeCor")
 var btnini = document.getElementsByClassName("btn")
 function btnpalavra() {
     for (let i = 0; i < 2; i++) {
-        btnini[i].style.animation = "aumentar 1s linear"
         btnini[i].style.pointerEvents = "none"
+        btnini[i].style.animation = "aumentar 1s linear"
     }
     btnpal.style.pointerEvents = "none"
     setavoltar.style.pointerEvents = "none"
@@ -52,7 +55,6 @@ function voltar() {
 }
 
 var texto = document.getElementById("ipalavraInput")
-var divs = document.getElementsByClassName("divpalavras")
 var btnenviar = document.getElementById("btnenviar")
 var arraypal = []
 var indice = 0
@@ -63,7 +65,7 @@ function escrevendo(event) {
     if (tecla == 13) {
         if (Number(texto.value.length) == 0) {
             alert("Digite algo")
-        } else if (Number(texto.value.length) < 2 || Number(texto.value.length) > 20 || texto.value.match(/\d/)) {
+        } else if (Number(texto.value.length) < 2 || Number(texto.value.length) > 20 || texto.value.match(/\d/) || texto.value.match(/[^\wÀ-ÿ-]/)) {
             alert("Valor inválido")
         } else if (indice < divs.length) {
             arraypal.push(divs[indice].innerHTML = texto.value)
@@ -108,6 +110,7 @@ function enviando() {
     }, 2000);
 }
 
+var ifieldset = document.getElementsByClassName("ifieldset")[1]
 var btnsorte = document.getElementById("btnsorte")
 var sorte = document.getElementById("sorte")
 var btnverifica = document.getElementById("btnverifica")
@@ -115,14 +118,26 @@ var indicerandom
 var escrito = document.getElementById("escrito")
 var arrayElement = []
 var decora = document.getElementById("idecoraInput")
+let palavra
+let nova_palavra
 decora.style.pointerEvents = "none"
+ifieldset.style.border = "2px solid gray"
 
 function sorteando() {
-    btnsorte.classList.add("btnGray")
+    dica.classList.remove("btnGray")
+
+    btnsorte.style.display = "none"
+    btnverifica.style.display = "block"
+    btnsorte.style.display = "none"
+    btnverifica.style.display = "block"
+
     decora.classList.remove("btnGray")
+    ifieldset.style.border = "2px solid var(--corbtn)"
     decora.style.pointerEvents = "all"
+
     console.log(arraypal)
     console.log(sorteados)
+
     if (sorteados.length == valorMaximo) {
         // desabilitar o botão "reiniciar"
         btnsorte.disabled = true;
@@ -134,15 +149,24 @@ function sorteando() {
         if (confirm("Todos os números já foram sorteados! Decorar novamente?") == true) {
             sorteados = []
             btnsorte.disabled = false;
-            btnsorte.classList.remove("btnGray")
+            btnsorte.style.display = "block"
+            btnverifica.style.display = "none"
             decora.classList.add("btnGray")
+            ifieldset.style.border = "2px solid gray"
             decora.style.pointerEvents = "none"
+
+            dica.classList.add("btnGray")
             return;
         } else {
             voltar()
         }
     } else {
-        sorte.innerHTML = arraypal[criarUnico()]
+        palavra = arraypal[criarUnico()];
+
+        // Modifica a palavra
+        nova_palavra = palavra.charAt(0) + palavra.slice(1, -1).replace(/[a-zA-Z]/g, "_") + palavra.charAt(palavra.length - 1);
+        sorte.innerHTML = nova_palavra
+        sorte.style.backgroundColor = "rgba(255, 255, 255, .85)"
     }
 }
 
@@ -168,6 +192,7 @@ function decorando(event) {
         } else {
             escrito.innerHTML = decora.value
             escrito.style.textTransform = "capitalize"
+            escrito.style.backgroundColor = "rgba(255, 255, 255, .85)"
             btnverifica.classList.remove("btnGray")
         }
         decora.value = ''
@@ -177,20 +202,39 @@ function decorando(event) {
 
 function verificando() {
     document.removeEventListener('keydown', escrevendo)
-    if (sorte.innerHTML == escrito.innerHTML) {
+    if (palavra == escrito.innerHTML) {
         btnsorte.classList.remove("btnGray")
         btnverifica.classList.add("btnGray")
         decora.classList.add("btnGray")
+        ifieldset.style.border = "2px solid gray"
         decora.style.pointerEvents = "none"
         decora.value = ''
         alert("deu certo")
+
+        dica.classList.add("btnGray")
+
+        btnsorte.style.display = "block"
+        btnverifica.style.display = "none"
         escrito.innerHTML = ""
         sorte.innerHTML = ""
+        sorte.style.backgroundColor = "rgba(255, 255, 255, .5)"
+        escrito.style.backgroundColor = "rgba(255, 255, 255, .5)"
     } else {
         btnverifica.classList.add("btnGray")
         alert("nao deu certo")
         decora.value = ''
     }
 
+}
+
+var dica = document.getElementById("dica")
+function dandoDica() {
+    var testeIndex = nova_palavra.indexOf("_")
+    if (testeIndex == -1) {
+        sorte.innerHTML = nova_palavra
+    } else {
+        sorte.innerHTML = palavra
+        dica.classList.add("btnGray")
+    }
 }
 

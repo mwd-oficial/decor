@@ -7,7 +7,7 @@
 }
 
 :root {
-    --corbtn: #00ffbb;
+    --corbtn: rgb(0, 255, 187);
 }
 
 ::-webkit-scrollbar {
@@ -155,11 +155,11 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    gap: 25px;
+    transform: translate(0px,75px);
     height: calc(100vh - 125px);
-    transform: translate(0, 125px);
     transition-duration: 1s;
     opacity: 0;
-
 }
 
 .inputs {
@@ -177,12 +177,13 @@ body {
     outline: none;
 }
 
-fieldset {
+
+.ifieldset {
     box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, .5);
     margin-top: 40px;
     font-size: 14px;
     border: 2px solid var(--corbtn);
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 legend {
@@ -216,7 +217,13 @@ legend {
     background-color: white;
     color: var(--corbtn);
     border: 5px solid var(--corbtn);
-    box-shadow: 0px 0px 100px 10px var(--corbtn);
+    box-shadow: 
+    0px 0px 25px 10px rgb(0, 255, 187),
+    0px 0px 50px 10px rgba(0, 255, 187, 0.84),
+    0px 0px 75px 10px rgb(0, 255, 187, 0.68),
+    0px 0px 100px 10px rgb(0, 255, 187, 0.52),
+    0px 0px 50px 10px rgb(0, 255, 187, 0.36),
+    0px 0px 200px 10px rgb(0, 255, 187, 0.2);
     transform: scale(1.15);
 }
 
@@ -239,6 +246,10 @@ legend {
     height: 75px;
 }
 
+#btnverifica {
+    display: none;
+}
+
 #iniform,
 #decform {
     display: flex;
@@ -253,6 +264,7 @@ legend {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 20px;
 }
 
 #verificandoPal {
@@ -260,6 +272,13 @@ legend {
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+
+#dica {
+    width: 75px;
+    height: 50px;
+    font-size: 16px;
+    margin: 0px;
 }
 
 .divpalavras,
@@ -293,5 +312,9 @@ legend {
         position: absolute;
         bottom: 0;
         right: 0;
+    }
+
+    #secdecorar #logoMWD {
+        bottom: -50px;
     }
 }

@@ -10,7 +10,7 @@
     width: 80%;
 }
 
-#telacarregamento,#telainiciar {
+#telacarregamento,#telainiciar,#secdecorar {
     height: 100vh;
     overflow: hidden;
 }
@@ -39,14 +39,26 @@
 
 #palmatdiv {
     top: 60%;
-}
+} 
 
 #verificandoPal {
     flex-direction: column;
+    gap: 0px;
+}
+
+#h1verificando {
+    gap: 0px;
+}
+
+#secdecorar {
+    gap: 20px;
 }
 
 #logoMWD {
     width: 100px;
+}
+
+#telainiciar #logoMWD {
     margin: auto;
     margin-bottom: 20px;
     position: relative;
