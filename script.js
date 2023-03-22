@@ -1,4 +1,6 @@
-
+var btns = document.getElementsByClassName("btn")
+var numeroWidth = window.innerWidth
+var numeroHeight = window.innerHeight
 
 //tela de carregamento
 var telacarregamento = document.getElementById("telacarregamento")
@@ -22,6 +24,12 @@ var setavoltar = document.getElementById("setavoltar")
 var logoDeCor = document.getElementById("logoDeCor")
 var btnini = document.getElementsByClassName("btn")
 function btnpalavra() {
+    if (numeroHeight > numeroWidth) {
+        btnpal.classList.add("btnHover")
+        setTimeout(() => {
+            btnpal.classList.remove("btnHover")
+        }, 1000);
+    }
     for (let i = 0; i < 2; i++) {
         btnini[i].style.pointerEvents = "none"
         btnini[i].style.animation = "aumentar 1s linear"
@@ -45,6 +53,12 @@ function btnpalavra() {
 }
 
 function voltar() {
+    if (numeroHeight > numeroWidth) {
+        setavoltar.classList.add("btnHover")
+        setTimeout(() => {
+            setavoltar.classList.remove("btnHover")
+        }, 1000);
+    }
     secdigitar.style.animation = "sumiro 1s linear"
     secdecorar.style.animation = "sumiro 1s linear"
     setavoltar.style.animation = "sumiro 1s linear"
@@ -94,6 +108,12 @@ function focoSec() {
 
 var secdecorar = document.getElementById("secdecorar")
 function enviando() {
+    if (numeroHeight > numeroWidth) {
+        btnenviar.classList.add("btnHover")
+        setTimeout(() => {
+            btnenviar.classList.remove("btnHover")
+        }, 1000);
+    }
     secdigitar.style.animation = "sumiro 1s linear"
     btnenviar.style.pointerEvents = "none"
     setavoltar.style.animation = "sumiro 1s linear"
@@ -124,6 +144,12 @@ decora.style.pointerEvents = "none"
 ifieldset.style.border = "2px solid gray"
 
 function sorteando() {
+    if (numeroHeight > numeroWidth) {
+        btnsorte.classList.add("btnHover")
+        setTimeout(() => {
+            btnsorte.classList.remove("btnHover")
+        }, 1000);
+    }
     dica.classList.remove("btnGray")
 
     btnsorte.style.display = "none"
@@ -201,6 +227,12 @@ function decorando(event) {
 }
 
 function verificando() {
+    if (numeroHeight > numeroWidth) {
+        btnverifica.classList.add("btnHover")
+        setTimeout(() => {
+            btnverifica.classList.remove("btnHover")
+        }, 1000);
+    }
     document.removeEventListener('keydown', escrevendo)
     if (palavra == escrito.innerHTML) {
         btnsorte.classList.remove("btnGray")
@@ -209,10 +241,10 @@ function verificando() {
         ifieldset.style.border = "2px solid gray"
         decora.style.pointerEvents = "none"
         decora.value = ''
-        alert("deu certo")
-
+        alert("Você acertou")
+        
         dica.classList.add("btnGray")
-
+        
         btnsorte.style.display = "block"
         btnverifica.style.display = "none"
         escrito.innerHTML = ""
@@ -221,7 +253,7 @@ function verificando() {
         escrito.style.backgroundColor = "rgba(255, 255, 255, .5)"
     } else {
         btnverifica.classList.add("btnGray")
-        alert("nao deu certo")
+        alert("Você errou")
         decora.value = ''
     }
 
@@ -229,6 +261,12 @@ function verificando() {
 
 var dica = document.getElementById("dica")
 function dandoDica() {
+    if (numeroHeight > numeroWidth) {
+        dica.classList.add("btnHover")
+        setTimeout(() => {
+            dica.classList.remove("btnHover")
+        }, 1000);
+    }
     var testeIndex = nova_palavra.indexOf("_")
     if (testeIndex == -1) {
         sorte.innerHTML = nova_palavra
