@@ -10,6 +10,10 @@
     width: 80%;
 }
 
+#alerta {
+    width: 75vw;
+}
+
 #telacarregamento,#telainiciar,#secdecorar {
     height: 100vh;
     overflow: hidden;
@@ -29,6 +33,7 @@
     margin-bottom: 10px;
     pointer-events: all;
 }
+
 #setavoltar:hover {
     transform: translateX(-50%) scale(1.15);
 }

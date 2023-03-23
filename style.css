@@ -24,6 +24,62 @@ body {
     background-color: skyblue;
 }
 
+#fundoAlerta {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 110vh;
+    width: 110vw;
+    z-index: 10;
+    display: none;
+}
+
+#alerta {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    border: 10px solid var(--corbtn);
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, .5);
+    padding: 20px;
+    z-index: 11;
+    display: none;
+}
+
+#palerta {
+    text-align: justify;
+}
+
+#btnok,#btnsim,#btnnao {
+    width: 75px;
+    height: 50px;
+    margin: 0;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .5);
+}
+
+#btnok:hover,#btnsim:hover,#btnnao:hover {
+    box-shadow: none;
+    box-shadow: 0px 0px 10px 5px var(--corbtn);
+}
+
+#simnaoflex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    display: none;
+}
+
 #telacarregamento {
     height: 100vh;
     width: 100vw;
@@ -213,20 +269,33 @@ legend {
 }
 
 @media screen and (orientation:landscape) {
-    .btn:hover,
-    #setavoltar:hover {
-        background-color: white;
-        color: var(--corbtn);
-        border: 5px solid var(--corbtn);
-        box-shadow: 
-        0px 0px 25px 10px rgb(0, 255, 187),
-        0px 0px 50px 10px rgba(0, 255, 187, 0.84),
-        0px 0px 75px 10px rgb(0, 255, 187, 0.68),
-        0px 0px 100px 10px rgb(0, 255, 187, 0.52),
-        0px 0px 50px 10px rgb(0, 255, 187, 0.36),
-        0px 0px 200px 10px rgb(0, 255, 187, 0.2);
-        transform: scale(1.15);
-    }
+    .btn:hover {
+    background-color: white;
+    color: var(--corbtn);
+    border: 5px solid var(--corbtn);
+    box-shadow: 
+    0px 0px 25px 10px rgb(0, 255, 187),
+    0px 0px 50px 10px rgba(0, 255, 187, 0.84),
+    0px 0px 75px 10px rgb(0, 255, 187, 0.68),
+    0px 0px 100px 10px rgb(0, 255, 187, 0.52),
+    0px 0px 50px 10px rgb(0, 255, 187, 0.36),
+    0px 0px 200px 10px rgb(0, 255, 187, 0.2);
+    transform: scale(1.15);
+}
+}
+
+#setavoltar:hover {
+    background-color: white;
+    color: var(--corbtn);
+    border: 5px solid var(--corbtn);
+    box-shadow: 
+    0px 0px 25px 10px rgb(0, 255, 187),
+    0px 0px 50px 10px rgba(0, 255, 187, 0.84),
+    0px 0px 75px 10px rgb(0, 255, 187, 0.68),
+    0px 0px 100px 10px rgb(0, 255, 187, 0.52),
+    0px 0px 50px 10px rgb(0, 255, 187, 0.36),
+    0px 0px 200px 10px rgb(0, 255, 187, 0.2);
+    transform: scale(1.15);
 }
 
 .btnHover {

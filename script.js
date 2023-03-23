@@ -23,14 +23,22 @@ var btnpal = document.getElementById("btnpal")
 var setavoltar = document.getElementById("setavoltar")
 var logoDeCor = document.getElementById("logoDeCor")
 var btnini = document.getElementsByClassName("btn")
+
 function btnpalavra() {
     if (numeroHeight > numeroWidth) {
         btnpal.classList.add("btnHover")
         setTimeout(() => {
             btnpal.classList.remove("btnHover")
-        }, 1000);
+        }, 400);
+        setTimeout(() => {
+            btnpalavraf()
+        }, 650);
+    } else {
+        btnpalavraf()
     }
-    for (let i = 0; i < 2; i++) {
+}
+function btnpalavraf() {
+    for (let i = 3; i < 5; i++) {
         btnini[i].style.pointerEvents = "none"
         btnini[i].style.animation = "aumentar 1s linear"
     }
@@ -57,8 +65,16 @@ function voltar() {
         setavoltar.classList.add("btnHover")
         setTimeout(() => {
             setavoltar.classList.remove("btnHover")
-        }, 1000);
+        }, 400);
+        setTimeout(() => {
+            voltarf()
+        }, 650);
+    } else {
+        voltarf()
     }
+}
+
+function voltarf() {
     secdigitar.style.animation = "sumiro 1s linear"
     secdecorar.style.animation = "sumiro 1s linear"
     setavoltar.style.animation = "sumiro 1s linear"
@@ -78,9 +94,12 @@ function escrevendo(event) {
     var tecla = event.keyCode
     if (tecla == 13) {
         if (Number(texto.value.length) == 0) {
-            alert("Digite algo")
-        } else if (Number(texto.value.length) < 2 || Number(texto.value.length) > 20 || texto.value.match(/\d/) || texto.value.match(/[^\wÀ-ÿ-]/)) {
-            alert("Valor inválido")
+            alertando()
+            palerta.innerHTML = "Digite algo!"
+        } else if (Number(texto.value.length) < 2 || Number(texto.value.length) > 20 || texto.value.match(/\d/) || texto.value.match(/[^\wÀ-ÿ-]/) || texto.value.match(/[A-Z]/)) {
+            alertando()
+            palerta.innerHTML = "Valor inválido! Digite no mínimo 2 letras e sem maiúsculas, numerais ou caracteres especiais."
+            document.removeEventListener('keydown', escrevendo)
         } else if (indice < divs.length) {
             arraypal.push(divs[indice].innerHTML = texto.value)
             divs[indice].style.textTransform = "capitalize"
@@ -89,7 +108,9 @@ function escrevendo(event) {
             console.log(arraypal)
             valorMaximo = indice;
         } else {
-            alert("Limite de palavras alcançado")
+            alertando()
+            palerta.innerHTML = "Limite de palavras alcançado!"
+            document.removeEventListener('keydown', escrevendo)
         }
         texto.value = ''
         if (indice >= 2) {
@@ -106,14 +127,55 @@ function focoSec() {
     document.addEventListener('keydown', decorando)
 }
 
-var secdecorar = document.getElementById("secdecorar")
+var fundoAlerta = document.getElementById("fundoAlerta")
+var alerta = document.getElementById("alerta")
+var palerta = document.getElementById("palerta")
+var btnok = document.getElementById("btnok")
+var simnaoflex = document.getElementById("simnaoflex")
+var simteste = false
+var naoteste = false
+
+function alertando() {
+    alerta.style.display = "flex"
+    fundoAlerta.style.display = "block"
+}
+
+function dandoOK() {
+    alerta.style.display = "none"
+    fundoAlerta.style.display = "none"
+}
+
+function sim() {
+    simteste = true
+    naoteste = false
+    alerta.style.display = "none"
+    fundoAlerta.style.display = "none"
+    simnaoteste()
+}
+function nao() {
+    simteste = false
+    naoteste = true
+    alerta.style.display = "none"
+    fundoAlerta.style.display = "none"
+    simnaoteste()
+}
+
 function enviando() {
     if (numeroHeight > numeroWidth) {
         btnenviar.classList.add("btnHover")
         setTimeout(() => {
             btnenviar.classList.remove("btnHover")
-        }, 1000);
+        }, 400);
+        setTimeout(() => {
+            enviandof()
+        }, 650);
+    } else {
+        enviandof()
     }
+}
+
+var secdecorar = document.getElementById("secdecorar")
+function enviandof() {
     secdigitar.style.animation = "sumiro 1s linear"
     btnenviar.style.pointerEvents = "none"
     setavoltar.style.animation = "sumiro 1s linear"
@@ -143,13 +205,39 @@ let nova_palavra
 decora.style.pointerEvents = "none"
 ifieldset.style.border = "2px solid gray"
 
+function simnaoteste() {
+    if (simteste == true && naoteste == false) {
+        sorteados = []
+        btnsorte.disabled = false;
+        btnsorte.style.display = "block"
+        btnverifica.style.display = "none"
+        decora.classList.add("btnGray")
+        ifieldset.style.border = "2px solid gray"
+        decora.style.pointerEvents = "none"
+        btnok.style.display = "block"
+        simnaoflex.style.display = "none"
+        dica.classList.add("btnGray")
+        return;
+    } else if (simteste == false && naoteste == true) {
+        voltar()
+    }
+}
+
 function sorteando() {
     if (numeroHeight > numeroWidth) {
         btnsorte.classList.add("btnHover")
         setTimeout(() => {
             btnsorte.classList.remove("btnHover")
-        }, 1000);
+        }, 400);
+        setTimeout(() => {
+            sorteandof()
+        }, 650);
+    } else {
+        sorteandof()
     }
+}
+
+function sorteandof() {
     dica.classList.remove("btnGray")
 
     btnsorte.style.display = "none"
@@ -172,20 +260,10 @@ function sorteando() {
         sorte.innerHTML = "";
 
         // exibir mensagem de que todos os números já foram sorteados
-        if (confirm("Todos os números já foram sorteados! Decorar novamente?") == true) {
-            sorteados = []
-            btnsorte.disabled = false;
-            btnsorte.style.display = "block"
-            btnverifica.style.display = "none"
-            decora.classList.add("btnGray")
-            ifieldset.style.border = "2px solid gray"
-            decora.style.pointerEvents = "none"
-
-            dica.classList.add("btnGray")
-            return;
-        } else {
-            voltar()
-        }
+        alertando()
+        palerta.innerHTML = "Todos os números já foram sorteados! Decorar novamente? (Senão atualizará a página e as palavras serão perdidas."
+        btnok.style.display = "none"
+        simnaoflex.style.display = "flex"
     } else {
         palavra = arraypal[criarUnico()];
 
@@ -212,9 +290,11 @@ function decorando(event) {
     var tecla = event.keyCode
     if (tecla == 13) {
         if (Number(decora.value.length) == 0) {
-            alert("Digite algo")
+            alertando()
+            palerta.innerHTML = "Digite algo"
         } else if (Number(decora.value.length) < 2 || Number(decora.value.length) > 20 || decora.value.match(/\d/)) {
-            alert("Valor inválido")
+            alertando()
+            palerta.innerHTML = "Valor inválido"
         } else {
             escrito.innerHTML = decora.value
             escrito.style.textTransform = "capitalize"
@@ -231,8 +311,16 @@ function verificando() {
         btnverifica.classList.add("btnHover")
         setTimeout(() => {
             btnverifica.classList.remove("btnHover")
-        }, 1000);
+        }, 400);
+        setTimeout(() => {
+            verificandof()
+        }, 650);
+    } else {
+        verificandof()
     }
+}
+
+function verificandof() {
     document.removeEventListener('keydown', escrevendo)
     if (palavra == escrito.innerHTML) {
         btnsorte.classList.remove("btnGray")
@@ -241,10 +329,12 @@ function verificando() {
         ifieldset.style.border = "2px solid gray"
         decora.style.pointerEvents = "none"
         decora.value = ''
-        alert("Você acertou")
-        
+        alertando()
+        palerta.innerHTML = "Você acertou!"
+        palerta.style.color = "green"
+
         dica.classList.add("btnGray")
-        
+
         btnsorte.style.display = "block"
         btnverifica.style.display = "none"
         escrito.innerHTML = ""
@@ -253,20 +343,30 @@ function verificando() {
         escrito.style.backgroundColor = "rgba(255, 255, 255, .5)"
     } else {
         btnverifica.classList.add("btnGray")
-        alert("Você errou")
+        alertando()
+        palerta.innerHTML = "Você errou! Certifique-se que escreveu em minúsculas."
+        palerta.style.color = "red"
         decora.value = ''
     }
 
 }
 
-var dica = document.getElementById("dica")
 function dandoDica() {
     if (numeroHeight > numeroWidth) {
         dica.classList.add("btnHover")
         setTimeout(() => {
             dica.classList.remove("btnHover")
-        }, 1000);
+        }, 400);
+        setTimeout(() => {
+            dandoDicaf()
+        }, 650);
+    } else {
+        dandoDicaf()
     }
+}
+
+var dica = document.getElementById("dica")
+function dandoDicaf() {
     var testeIndex = nova_palavra.indexOf("_")
     if (testeIndex == -1) {
         sorte.innerHTML = nova_palavra

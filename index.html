@@ -13,6 +13,16 @@
 </head>
 
 <body onload="carregando()">
+    <div id="fundoAlerta"></div>
+    <div id="alerta">
+        <p id="palerta">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore facilis magnam aliquid velit, omnis veniam maiores nisi distinctio impedit amet officia nam atque fugit cupiditate explicabo officiis quos dolor sapiente! lore
+        </p>
+        <button class="btn" id="btnok" onclick="dandoOK()">OK</button>
+        <div id="simnaoflex">
+            <button class="btn" id="btnsim" onclick="sim()" >Sim</button>
+            <button class="btn" id="btnnao" onclick="nao()" >Não</button>
+        </div>
+    </div>
     <section id="telacarregamento">
         <div id="load"></div>
         <p>Carregando...</p>
@@ -29,7 +39,7 @@
     <section id="secdigitar">
         
         <div id="gradepalavras">
-            <div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></d>
+            <div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></div><div class="divpalavras"></div>
         </div>
         
         <div id="iniform">
@@ -58,7 +68,7 @@
             <button onclick="sorteando()" id="btnsorte" class="btn">Sortear</button>
             <button onclick="verificando()" id="btnverifica" class="btn btnGray">Verificar</button>
             <fieldset style="margin: 0;" class="ifieldset">
-                <legend>Escreva em minúsculas.</legend>
+                <legend>Escreva a palavra correspondente.</legend>
                 <input type="text" name="decoraInput" id="idecoraInput" class="inputs btnGray" placeholder="Digite aqui e dê enter" autocomplete="off"
                 maxlength="20" minlength="2" onfocus="focoSec()">
             </fieldset>
