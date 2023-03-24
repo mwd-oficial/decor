@@ -127,6 +127,7 @@ function focoSec() {
     document.addEventListener('keydown', decorando)
 }
 
+var corpo = document.getElementById("corpo")
 var fundoAlerta = document.getElementById("fundoAlerta")
 var alerta = document.getElementById("alerta")
 var palerta = document.getElementById("palerta")
@@ -138,11 +139,13 @@ var naoteste = false
 function alertando() {
     alerta.style.display = "flex"
     fundoAlerta.style.display = "block"
+    corpo.style.overflow = "hidden"
 }
 
 function dandoOK() {
     alerta.style.display = "none"
     fundoAlerta.style.display = "none"
+    corpo.style.overflow = "visible"
 }
 
 function sim() {
@@ -150,6 +153,7 @@ function sim() {
     naoteste = false
     alerta.style.display = "none"
     fundoAlerta.style.display = "none"
+    corpo.style.overflow = "visible"
     simnaoteste()
 }
 function nao() {
