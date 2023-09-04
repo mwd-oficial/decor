@@ -79,6 +79,9 @@ function voltarf() {
     secdecorar.style.animation = "sumiro 1s linear"
     setavoltar.style.animation = "sumiro 1s linear"
     setTimeout(() => {
+        secdigitar.style.opacity = 0
+        secdecorar.style.opacity = 0
+        setavoltar.style.opacity = 0
         location = location
         window.location.reload()
     }, 500);
@@ -96,7 +99,7 @@ function escrevendo(event) {
         if (Number(texto.value.length) == 0) {
             alertando()
             palerta.innerHTML = "Digite algo!"
-        } else if (Number(texto.value.length) < 2 || Number(texto.value.length) > 20 || texto.value.match(/\d/) || texto.value.match(/[^\wÀ-ÿ-]/) || texto.value.match(/[A-Z]/)) {
+        } else if (Number(texto.value.length) < 2 || Number(texto.value.length) > 20 || texto.value.match(/\d/) || texto.value.match(/[^\wÀ-ÿ- ]/) || texto.value.match(/[A-Z]/)) {
             alertando()
             palerta.innerHTML = "Valor inválido! Digite no mínimo 2 letras e sem maiúsculas, numerais ou caracteres especiais."
             document.removeEventListener('keydown', escrevendo)

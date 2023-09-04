@@ -392,12 +392,20 @@ legend {
     }
 
     #logoMWD {
-        width: 100px;
+        width: 125px;
         margin: 20px;
         position: absolute;
         bottom: 0;
         right: 0;
-    }
+        transition-duration: 0.5s;
+        padding: 10px;
+        border-radius: 20px;
+      }
+      
+      #logoMWD:hover {
+        transform: scale(1.1);
+        background-color: white;
+      }
 
     #secdecorar #logoMWD {
         bottom: -50px;
